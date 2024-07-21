@@ -13,7 +13,7 @@ class WebController extends Controller
 
         // Define the parameters for the API request
         $params = [
-            'type' => 'transaction',  // bisa diubah ke 'earning' atau 'user' sesuai kebutuhan
+            'type' => 'transaction', 
             'tahun' => '2024',
             'bulan' => '07'
         ];
