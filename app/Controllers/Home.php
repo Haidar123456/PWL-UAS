@@ -19,6 +19,10 @@ class Home extends BaseController
         $this->transaction = new TransactionModel();
         $this->transaction_detail = new TransactionDetailModel();
         $this->product = new ProductModel();
+        $this->product = new ProductModel();
+        $this->transaction = new TransactionModel();
+        $this->transaction_detail = new TransactionDetailModel();
+
     }
 
     public function index(): string
@@ -129,5 +133,4 @@ class Home extends BaseController
             return $this->response->setStatusCode(403);
         }
     }
-
 }

@@ -5,16 +5,21 @@ use CodeIgniter\Model;
 
 class ProductModel extends Model
 {
-    protected $table = 'product'; // Sesuaikan dengan nama tabel Anda
+    protected $table = 'product'; // Adjust this to your table name
     protected $primaryKey = 'id';
-    protected $allowedFields = ['nama', 'harga', 'jumlah', 'foto', 'created_at', 'updated_at'];
 
+    protected $allowedFields = [
+        'nama', 'harga', 'jumlah', 'foto', 'created_at', 'updated_at'
+    ];
+
+    // Validation rules for model
     protected $validationRules = [
         'nama' => 'required|min_length[5]',
         'harga' => 'required|numeric',
         'jumlah' => 'required|numeric',
     ];
 
+    // Custom validation messages
     protected $validationMessages = [
         'nama' => [
             'required' => 'Nama harus diisi',

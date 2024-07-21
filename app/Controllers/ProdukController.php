@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\ProductModel;
@@ -7,8 +8,9 @@ use Dompdf\Dompdf;
 class ProdukController extends BaseController
 {
     protected $product;
+    protected $validation;
 
-    function __construct()
+    public function __construct()
     {
         $this->product = new ProductModel();
     }
@@ -68,7 +70,7 @@ class ProdukController extends BaseController
             }
 
             $dataFoto = $this->request->getFile('foto');
-
+    
             if ($dataFoto->isValid()) {
                 $fileName = $dataFoto->getRandomName();
                 $dataFoto->move('img/', $fileName);
@@ -100,7 +102,7 @@ class ProdukController extends BaseController
 
         $html = view('v_produKPDF', ['product' => $product]);
 
-        $filename = date('y-m-d-H-i-s') . '-produk';
+        $filename = date('Y-m-d-H-i-s') . '-produk.pdf';
 
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
@@ -115,6 +117,6 @@ class ProdukController extends BaseController
         $dompdf->render();
 
         // output the generated pdf
-        $dompdf->stream($filename);
+        $dompdf->stream($filename, array('Attachment' => 0));
     }
 }
